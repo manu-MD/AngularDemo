@@ -1,0 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="submit(form.value)">
+
+    <h3>Identification</h3>
+
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="pat@example.com" formControlName="email" required>
+    </mat-form-field>
+
+    <br>
+
+    <div class='pass'>
+        <mat-form-field appearance="fill">
+            <mat-label>Entrez votre mot de passe</mat-label>
+            <input formControlName="password" matInput type="password">
+        </mat-form-field>
+    </div>
+
+    <br>
+
+    <div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Valider</button>
+        <button mat-raised-button type="reset" (click)="onReset()">Reset</button>
+    </div>
+</form>

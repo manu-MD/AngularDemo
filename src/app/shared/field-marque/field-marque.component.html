@@ -1,0 +1,7 @@
+<mat-form-field [formGroup]="formGroup">
+    <mat-select [formControlName]="controlName" placeholder="Choisir une marque">
+        <mat-option *ngFor="let marque of marques$ | async" [value]="marque.id">
+            {{marque.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>   

@@ -1,0 +1,10 @@
+<h3>INSCRIPTION</h3>
+
+<!-- Vue de la page principale du formulaire d'inscription avec 
+    la liste des utilisateurs inscrits modifiable et supprimable -->
+
+<app-user-form [user]="user" (submited)="submited()"></app-user-form>
+
+<app-user-liste [users]="users" (updated)="toUpdate($event)" (deleted)="findUser()"></app-user-liste>
+
+

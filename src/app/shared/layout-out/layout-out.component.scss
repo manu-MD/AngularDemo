@@ -1,0 +1,24 @@
+h1{
+    text-align: center;
+    color: blue;
+    // font-weight: bold;
+    padding-top: 100px;
+}
+
+#boutons {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.boutonsForms button,
+.boutonsForms a {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.background {    
+    background-image: url("../../../assets/images/accueil_out.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
