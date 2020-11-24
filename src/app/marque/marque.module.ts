@@ -1,30 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MarqueHomePageComponent } from './marque-home-page/marque-home-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { MotoFormComponent } from './components/moto-form/moto-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MotoFormComponent
-  },
+    component: MarqueHomePageComponent
+  }
 ];
 
 @NgModule({
   declarations: [
-    MotoFormComponent
+    MarqueHomePageComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
+    FormsModule,  
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
     SharedModule
   ],
   exports: [
     RouterModule
   ]
 })
-export class MotoModule { }
+export class MarqueModule { }

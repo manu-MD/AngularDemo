@@ -26,7 +26,9 @@ export class BaseService {
         return this.http.get<T>(`${ this.url }/${ id }`);
     }
 
-    create<T>(param) {
+    create<T>(param) { 
+        console.log(this.url);
+                     
         return this.http.post<T>(this.url, param);
     }
 
