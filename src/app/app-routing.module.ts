@@ -13,8 +13,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+        loadChildren: () => import('./landings-page/landings-page.module').then(m => m.LandingsPageModule)
       },
+      {
+        path: '',
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      }
     ]
   },
       

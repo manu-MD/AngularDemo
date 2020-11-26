@@ -15,6 +15,7 @@ export class MarqueHomePageComponent implements OnInit {
   @ViewChild(MatTable) myTable: MatTable<Marque[]>;
 
   form: FormGroup;
+  marque: Marque;
   marques: Marque[] = [];
   categories: any[] = [
     {value: 'Voiture'},
@@ -44,11 +45,11 @@ export class MarqueHomePageComponent implements OnInit {
     );
   }
   
-  // ngOnDestroy() {
-  //   if (this.subMarque) {
-  //     this.subMarque.unsubscribe();
-  //   }
-  // }
+  ngOnDestroy() {
+    if (this.subMarque) {
+      this.subMarque.unsubscribe();
+    }
+  }
   //initialise le formulaire
   initForm() {
     this.form = this.fb.group({
@@ -57,37 +58,52 @@ export class MarqueHomePageComponent implements OnInit {
     });
   }
   
-  // findMarque() {
-  //   this.subMarque = this.ms.find<Marque>().subscribe(
-  //     (marques: Marque[]) => { 
-  //       this.marques = marques;
-  //       this.myTable.renderRows();
-  //     }
-  //   );    
-  // }
+  findMarque() {
+    this.subMarque = this.ms.find<Marque>().subscribe(
+      (marques: Marque[]) => { 
+        this.marques = marques;
+        this.myTable.renderRows();
+      }
+    );    
+  }
   // valide et envoie le formulaire rempli vers l'API
   submit(value: Marque) {
+    console.log(this.marque);
+    if (this.marque && this.marque.id) {
+      this.ms.edit(this.marque.id, value).subscribe(
+        () => this.findMarque()
+      )
+    } else {
     // console.log('appel de la méthode submit', value);
     // appelle l'API de création de marque
-    this.ms.create(value).subscribe()
-  }  
-  
-  // modifier(name: string) {
-  //   this.ms.find(name).subscribe(
-  //     (marques: Marque[]) => {
-  //       this.marques = marques;
+      this.ms.create(value).subscribe(
+        () => this.findMarque()
+      );
+    }
+  }
 
-  //       this.form.patchValue({
-  //         marques: this.marques,
-  //         categories: this.categories
-  //       })
-  //     }
-  //   )
-  // }
+  // modifie et remplace la nouvelle marque créée en BDD
+  modifier(id: string) {       
+    this.ms.findById(id).subscribe(
+      (marque: Marque) => {
+        console.log(marque);
+        this.marque = marque;
 
-  // supprimer(name: string) {
-  //   this.ms.delete(name).subscribe(
-  //     () => this.findMarque()
-  //   )
-  // }
+        this.form.patchValue({
+          name: this.marque.name,
+          category: this.marque.category
+        })
+      }
+    )
+  }
+  // supprime une marque de la BDD
+  supprimer(id: string) {
+    this.ms.delete(id).subscribe(
+      () => this.findMarque()
+    )
+  }
+
+  getMarque(l) {
+    return 'name';
+  }
 }

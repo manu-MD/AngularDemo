@@ -1,6 +1,6 @@
 h1{
     text-align: center;
-    color: blue;
+    color: rgb(63, 81, 181);
     // font-weight: bold;
     padding-top: 100px;
 }
@@ -14,11 +14,4 @@ h1{
 .boutonsForms a {
     margin-left: 20px;
     margin-right: 20px;
-}
-
-.background {    
-    background-image: url("../../../assets/images/accueil_in.jpg");
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
 }

@@ -1,0 +1,46 @@
+<h2>Découvrez nos véhicules !</h2>
+
+<div class="select">
+    <mat-form-field appearance="fill">
+        <label>Catégories de véhicules</label>
+        <mat-select [(ngModel)]="selector">
+            <mat-option *ngFor="let val of typeVehicule" [value]="val">{{ val }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="voitures && selector === 'Voiture'">
+        <h3>Voitures</h3>
+        <div *ngFor="let voiture of voitures">
+            <p>MARQUE : {{ voiture.marque.name }}</p>
+            <p>OBSERVATION : {{ voiture.observation }}</p>
+            <hr>
+        </div>
+    </div>
+
+    <div *ngIf="motos && selector === 'Moto'">
+        <h3>Motos</h3>
+        <div *ngFor="let moto of motos">
+            <p>MARQUE : {{ moto.marque.name }}</p>
+            <p>OBSERVATION : {{ moto.renseignement }}</p>
+            <hr>
+        </div>
+    </div>
+
+    <div *ngIf="bateaux && selector === 'Bateau'">
+        <h3>Bateaux</h3>
+        <div *ngFor="let bateau of bateaux">
+            <p>MARQUE : {{ bateau.marque.name }}</p>
+            <p>OBSERVATION : {{ bateau.renseignement }}</p>
+            <hr>
+        </div>
+    </div>
+
+    <div *ngIf="camions && selector === 'Camion'">
+        <h3>Camions</h3>
+        <div *ngFor="let camion of camions">
+            <p>MARQUE : {{ camion.marque.name }}</p>
+            <p>OBSERVATION : {{ camion.renseignement }}</p>
+            <hr>
+        </div>
+    </div>
+</div>

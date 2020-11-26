@@ -5,17 +5,17 @@ import { UserPageLoginComponent } from './user-page-login/user-page-login.compon
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: UserPageLoginComponent
   },
   {
     path: 'inscription',
     component: UserPageInscriptionComponent
   },
-  {
-    path: 'login',
-    component: UserPageLoginComponent
-  }  
+  // {
+  //   path: 'login',
+  //   component: UserPageLoginComponent
+  // }  
 ];
 
 @NgModule({

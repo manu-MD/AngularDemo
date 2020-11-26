@@ -18,7 +18,14 @@ import { RouterModule } from '@angular/router';
 import { LogOutComponent } from './log-out/log-out.component';
 
 @NgModule({
-  declarations: [FieldColorComponent, FieldMarqueComponent, FieldTypeComponent, LayoutInComponent, LayoutOutComponent, LogOutComponent],
+  declarations: [
+    FieldColorComponent,
+    FieldMarqueComponent,
+    FieldTypeComponent,
+    LayoutInComponent,
+    LayoutOutComponent,
+    LogOutComponent
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
