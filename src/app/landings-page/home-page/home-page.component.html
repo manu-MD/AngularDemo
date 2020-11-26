@@ -1,12 +1,13 @@
 <h2>Découvrez nos véhicules !</h2>
 
 <div class="select">
-    <mat-form-field appearance="fill">
-        <label>Catégories de véhicules</label>
-        <mat-select [(ngModel)]="selector">
-            <mat-option *ngFor="let val of typeVehicule" [value]="val">{{ val }}</mat-option>
-        </mat-select>
-    </mat-form-field>
+  <mat-form-field  class="input-width" appearance="fill">
+    <label>Catégories de véhicules</label>
+    <mat-select [(ngModel)]="selector" (selectionChange)="loadVehicules($event)">
+      <mat-option *ngFor="let val of typeVehicule" [value]="val">{{ val }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
 
     <div *ngIf="voitures && selector === 'Voiture'">
         <h3>Voitures</h3>

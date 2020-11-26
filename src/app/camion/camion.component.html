@@ -1,12 +1,13 @@
 <form [formGroup]="form" (ngSubmit)="submit(form.value)" #truckForm="ngForm">
+  <br>
 
     <h3>CAMION</h3>
 
-    <app-field-marque category="Camion" [formGroup]="form" controlName="marqueId"></app-field-marque>
+    <app-field-marque class="input-width"category="Camion" [formGroup]="form" controlName="marqueId"></app-field-marque>
 
     <br>
 
-    <mat-form-field>
+    <mat-form-field class="input-width">
         <mat-select formControlName="genre" placeholder="Sélectionnez le genre">
             <mat-option *ngFor="let genre of genres" [value]="genre.value">
                 {{genre.name}}
@@ -16,7 +17,7 @@
 
     <br>
 
-    <mat-form-field>
+    <mat-form-field class="input-width">
         <mat-select formControlName="poids" placeholder="Sélectionnez le PTAC">
             <mat-option *ngFor="let poids of poids" [value]="poids.value">
                 {{poids.name}}
@@ -25,25 +26,25 @@
     </mat-form-field>
 
     <br>
-    
+
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Saisissez une date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-   
+
     <br>
 
-    <mat-form-field>
-        <textarea matInput id="renseignement" formControlName="renseignement" 
+    <mat-form-field class="input-width">
+        <textarea matInput id="renseignement" formControlName="renseignement"
             placeholder="Demande de renseignements">
         </textarea>
     </mat-form-field>
 
     <br>
-    
-    <mat-form-field>
+
+    <mat-form-field class="input-width">
         <input matInput placeholder="Entrez votre email" formControlName="email" required>
     </mat-form-field>
 
@@ -65,12 +66,12 @@
         <th mat-header-cell *matHeaderCellDef> Marque </th>
         <td mat-cell *matCellDef="let l"> {{l.marque.name}}  </td>
     </ng-container>
-    
+
     <ng-container matColumnDef="genre">
         <th mat-header-cell *matHeaderCellDef> Genre </th>
         <td mat-cell *matCellDef="let l"> {{getGenre(l)}} </td>
     </ng-container>
-    
+
     <ng-container matColumnDef="poids">
         <th mat-header-cell *matHeaderCellDef> PTAC </th>
         <td mat-cell *matCellDef="let l"> {{getPoids(l)}} </td>
@@ -90,21 +91,21 @@
         <th mat-header-cell *matHeaderCellDef> Email </th>
         <td mat-cell *matCellDef="let l">{{l.email}} </td>
     </ng-container>
-    
+
     <ng-container matColumnDef="option1">
         <th mat-header-cell *matHeaderCellDef> Option </th>
-        <td mat-cell *matCellDef="let l"> 
+        <td mat-cell *matCellDef="let l">
             <button mat-raised-button color="primary" (click)="modifier(l.id)" type="button">Modifier</button>
         </td>
     </ng-container>
 
     <ng-container matColumnDef="option2">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let l"> 
+        <td mat-cell *matCellDef="let l">
             <button mat-raised-button color="primary" (click)="supprimer(l.id)" type="button">Supprimer</button>
         </td>
     </ng-container>
-    
+
     <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
 

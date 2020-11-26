@@ -7,11 +7,12 @@ import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserPageLoginComponent } from './user-page-login/user-page-login.component';
 import { UserPageInscriptionComponent } from './user-page-inscription/user-page-inscription.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
-    UserPageComponent, 
-    UserFormComponent, 
+    UserPageComponent,
+    UserFormComponent,
     UserListeComponent,
     UserPageLoginComponent,
     UserPageInscriptionComponent
@@ -19,7 +20,8 @@ import { UserPageInscriptionComponent } from './user-page-inscription/user-page-
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModule
+    SharedModule,
+    MatCardModule
   ],
 })
 export class UserModule { }

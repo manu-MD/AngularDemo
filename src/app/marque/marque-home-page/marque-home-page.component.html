@@ -2,13 +2,13 @@
 
     <h3>NOUVELLE MARQUE DE VEHICULE</h3>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="input-width">
         <input formControlName="name"  matInput placeholder="Saisir la marque souhaitée">
     </mat-form-field>
 
     <br>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="input-width">
         <mat-select formControlName="category" placeholder="catégorie du véhicule">
             <mat-option *ngFor="let category of categories" [value]="category.value">
                 {{category.value}}
@@ -23,7 +23,7 @@
     </div>
 
   <br>
-  
+
 </form>
 
 <table #myTable mat-table [dataSource]="marques" class="mat-elevation-z8">
