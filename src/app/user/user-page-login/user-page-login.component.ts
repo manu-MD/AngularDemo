@@ -24,7 +24,7 @@ export class UserPageLoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // initialisation du formulaire 
   initForm() {
     this.form = this.fb.group({
       email: ['ju@ju.fr', [Validators.required]],
@@ -35,7 +35,9 @@ export class UserPageLoginComponent implements OnInit {
   submit(value) {
     this.as.login(value.email, value.password).subscribe(
       (res: any) => {
+        // retour OK 200, on récupère l'accès token et on le stock dans le localStorage
         localStorage.setItem('token', res.access_token);
+        // redirection vers la page d'accueil de la partie privée
         this.router.navigate(['/in'])
       }
     )
