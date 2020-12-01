@@ -21,7 +21,7 @@ const routes: Routes = [
       }
     ]
   },
-      
+
   {
     path: 'logout',
     component: LogOutComponent
@@ -58,6 +58,10 @@ const routes: Routes = [
         path: 'marque',
         loadChildren: () => import('./marque/marque.module').then(m => m.MarqueModule),
       },
+      {
+        path: 'couleur',
+        loadChildren: () => import('./couleur/couleur.module').then(m => m.CouleurModule),
+      },
     ]
   },
 
@@ -92,7 +96,7 @@ const routes: Routes = [
   //   canActivate: [
   //     IsSignedInGuard
   //   ]
-  // }, 
+  // },
 ];
 
 @NgModule({
