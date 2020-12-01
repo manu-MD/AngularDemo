@@ -59,40 +59,7 @@ const routes: Routes = [
         loadChildren: () => import('./marque/marque.module').then(m => m.MarqueModule),
       },
     ]
-  },
-
-  // {
-  //   path: 'user',
-  //   loadChildren: () => import('./user/user.module').then(m => m.UserModule)
-  // },
-  // {
-  //   path: 'voiture',
-  //   loadChildren: () => import('./voiture/voiture.module').then(m => m.VoitureModule),
-  //   canActivate: [
-  //     IsSignedInGuard
-  //   ]
-  // // },
-  // {
-  //   path: 'moto',
-  //   loadChildren: () => import('./moto/moto.module').then(m => m.MotoModule),
-  //   canActivate: [
-  //     IsSignedInGuard
-  //   ]
-  // },
-  // {
-  //   path: 'bateau',
-  //   loadChildren: () => import('./bateau/bateau.module').then(m => m.BateauModule),
-  //   canActivate: [
-  //     IsSignedInGuard
-  //   ]
-  // },
-  // {
-  //   path: 'camion',
-  //   loadChildren: () => import('./camion/camion.module').then(m => m.CamionModule),
-  //   canActivate: [
-  //     IsSignedInGuard
-  //   ]
-  // }, 
+  }, 
 ];
 
 @NgModule({

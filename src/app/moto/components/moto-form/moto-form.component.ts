@@ -35,9 +35,9 @@ export class MotoFormComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private mfs: MotoFormService,
-    private ms: MarquesService,
-    private ts: TypesService,
-    private cs: CouleursService
+    // private ms: MarquesService,
+    // private ts: TypesService,
+    // private cs: CouleursService
   ) {
     this.initForm();
   }
@@ -51,7 +51,7 @@ export class MotoFormComponent implements OnInit, OnDestroy {
       this.subMoto.unsubscribe();
     }
   }
-
+  // intialisation du formulaire avec les règles de saisie
   initForm() {
     this.form = this.fb.group({
       marqueId: [null, Validators.required],
@@ -63,7 +63,7 @@ export class MotoFormComponent implements OnInit, OnDestroy {
       email: [null, [Validators.required, Validators.email]]
     });    
   } 
-  
+  // récupère la liste des annonces moto déposées
   findMoto() {
     this.subMoto = this.mfs.find<Moto>().subscribe(
       (motos: Moto[]) => { 
@@ -72,31 +72,34 @@ export class MotoFormComponent implements OnInit, OnDestroy {
       }
     );    
   }
-
+  // envoie l'annonce créée dans le formulaire
   submit(value: Moto) {
+    // si l'objet existe nous devons modifier
     if (this.moto && this.moto.id) {
+      // appel de l'api de modification
       this.mfs.edit(this.moto.id, value).subscribe(
         () => this.findMoto()
       )
-    } else {
+    } else { // sinon on ajoute l'objet      
       this.mfs.create(value).subscribe(
+        // appel l'api de création
         () => this.findMoto()   
       );
-    }
-   
+    }   
     this.onReset();
   }
-  
+  // réinitialise le formulaire
   onReset(){
     this.bikeForm.resetForm();
     this.form.reset();
   }
-  
+  // récupère l'objet à modifier pour pré saisie du formulaire
   modifier(id: string) {
+    // recherche l'objet à modifier
     this.mfs.findById(id).subscribe(
-      (moto: Moto) => {
+            (moto: Moto) => {
         this.moto = moto;
-
+        // met à jour les champs du formulaire
         this.form.patchValue({
           marqueId: this.moto.marque.id,
           typeId: this.moto.type.id,
@@ -109,27 +112,10 @@ export class MotoFormComponent implements OnInit, OnDestroy {
       }
     )
   }
-
+  // permet de supprimer l'objet
   supprimer(id: string) {
     this.mfs.delete(id).subscribe(
       () => this.findMoto()
     );
-  }
-
-  getMarque(l) {
-    return 'marque';
-  }
-   
-  getType(l) {
-    return 'type';
-  }
-
-  getCouleur(l) {
-    return 'couleur';
-  }
-
-  getDate(l) {
-    const date = new Date(l.date);
-    return `${date.getDay()}/${date.getMonth()+1}/${date.getFullYear()}`;
   }
 }

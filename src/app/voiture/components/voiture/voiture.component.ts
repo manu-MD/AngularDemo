@@ -107,21 +107,4 @@ export class VoitureComponent implements OnInit, OnDestroy {
       () => this.findVoiture()
     );
   }
-
-  getMarque(l) {
-    return 'marque';
-  }
-
-  getType(l) {
-  return 'type';
-  }
-
-  getCouleur(l) {
-    return 'couleur';
-  }
-  
-  getDate(l) {
-    const date = new Date(l.date);
-    return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
-  }
 }
