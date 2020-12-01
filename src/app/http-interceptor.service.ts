@@ -25,7 +25,7 @@ export class JwtInterceptor implements HttpInterceptor {
       if (err.status === 401) {
         // this.ls.logout();
 
-        this.router.navigate(['/user/login']);
+        this.router.navigate(['/login']);
       }
 
       const error = err.error.message || err.statusText;

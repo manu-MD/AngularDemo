@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path:'in',
     component: LayoutInComponent,
-    canActivate: [
+    canActivateChild: [
       IsSignedInGuard
     ],
     children: [

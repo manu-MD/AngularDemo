@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
-export class IsSignedInGuard implements CanActivate {
+export class IsSignedInGuard implements CanActivateChild {
 
     constructor(
         private router: Router
     ) {
     }
-    
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         const isSignedIn = localStorage.getItem('token');
+        console.log(isSignedIn);
         if (!isSignedIn) {
             this.router.navigate(['/']);
         }
@@ -20,3 +21,5 @@ export class IsSignedInGuard implements CanActivate {
     }
 
 }
+
+
