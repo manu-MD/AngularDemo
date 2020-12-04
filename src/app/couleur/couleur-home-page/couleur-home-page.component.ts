@@ -5,6 +5,7 @@ import {CouleursService} from '../../shared/services/couleurs.service';
 import {Subscription} from 'rxjs';
 import {MatTable} from '@angular/material/table';
 import {Bateau} from '../../bateau/interfaces/bateau.interface';
+import {Marque} from '../../shared/interfaces/marque.interface';
 
 @Component({
   selector: 'app-couleur-home-page',
@@ -26,7 +27,7 @@ export class CouleurHomePageComponent implements OnInit {
   subColor: Subscription;
 
   displayColumns: string[] = [
-    'couleur', 'option2'
+    'couleur', 'option1', 'option2'
   ];
 
   constructor(
@@ -77,6 +78,19 @@ export class CouleurHomePageComponent implements OnInit {
     console.log('méthode delete', id);
     this.cs.delete(id).subscribe(
       () => this.findColor()
+    );
+  }
+
+  modifier(id: string) {
+    this.cs.findById(id).subscribe(
+      (couleurs: Couleur) => {
+        console.log(couleurs);
+        this.couleur = couleurs;
+
+        this.form.patchValue({
+          couleur: this.couleur.couleur,
+        });
+      }
     );
   }
 }
