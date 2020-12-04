@@ -1,0 +1,60 @@
+<form [formGroup]="form" (ngSubmit)="submit(form.value)">
+
+  <h3>NOUVELLE COULEUR DE VEHICULE</h3>
+
+  <mat-form-field appearance="fill" class="input-width">
+    <input formControlName="couleur"  matInput placeholder="Saisir la couleur souhaitée">
+  </mat-form-field>
+
+  <br>
+
+<!--  <mat-form-field appearance="fill" class="input-width">-->
+<!--    <mat-select formControlName="category" placeholder="catégorie du véhicule">-->
+<!--      <mat-option *ngFor="let category of categories" [value]="category.value">-->
+<!--        {{category.value}}-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+<!--  </mat-form-field>-->
+
+  <br>
+
+  <div>
+    <button mat-raised-button color="primary" type="submit">Valider</button>
+  </div>
+
+  <br>
+
+</form>
+
+<table #myTable mat-table [dataSource]="couleurs" class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="couleur">
+    <th mat-header-cell *matHeaderCellDef> Couleur </th>
+    <td mat-cell *matCellDef="let l"> {{l.couleur}} </td>
+  </ng-container>
+
+<!--  <ng-container matColumnDef="category">-->
+<!--    <th mat-header-cell *matHeaderCellDef> Catégorie </th>-->
+<!--    <td mat-cell *matCellDef="let l"> {{l.category}} </td>-->
+<!--  </ng-container>-->
+
+  <ng-container matColumnDef="option1">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let l">
+      <button mat-raised-button color="primary" (click)="modifier(l.id)" type="button">Modifier</button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="option2">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let l">
+      <button mat-raised-button color="primary" (click)="supprimer(l.id)" type="button">Supprimer</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+
+</table>
+

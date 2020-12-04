@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
-export class IsSignedInGuard implements CanActivate {
+export class IsSignedInGuard implements CanActivateChild {
 
     constructor(
         private router: Router
     ) {
     }
-    // garde qui surveille l'existence de la clé token
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         const isSignedIn = localStorage.getItem('token');
-        // si la clé token n'existe pas, renvoi vers la page de login 
+        console.log(isSignedIn);
         if (!isSignedIn) {
             this.router.navigate(['/login']);
         }
@@ -22,3 +22,5 @@ export class IsSignedInGuard implements CanActivate {
     }
 
 }
+
+

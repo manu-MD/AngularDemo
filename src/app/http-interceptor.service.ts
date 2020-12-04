@@ -27,7 +27,6 @@ export class JwtInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(catchError(err => {
       // si le code retour est 401 (unauthorized)
       if (err.status === 401) {
-        // supprime le token (peut exister dans le localstorage mais ne plus être valide)
         localStorage.removeItem('token');
         // redirige vers le login
         this.router.navigate(['/login']);

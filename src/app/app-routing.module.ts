@@ -21,7 +21,7 @@ const routes: Routes = [
       }
     ]
   },
-      
+
   {
     path: 'logout',
     component: LogOutComponent
@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path:'in',
     component: LayoutInComponent,
-    canActivate: [
+    canActivateChild: [
       IsSignedInGuard
     ],
     children: [
@@ -62,8 +62,45 @@ const routes: Routes = [
         path: 'user',
         loadChildren: () => import('./user/user.module').then(m => m.UserModule),
       },
+      {
+        path: 'couleur',
+        loadChildren: () => import('./couleur/couleur.module').then(m => m.CouleurModule),
+      }
     ]
   }, 
+
+  // {
+  //   path: 'user',
+  //   loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  // },
+  // {
+  //   path: 'voiture',
+  //   loadChildren: () => import('./voiture/voiture.module').then(m => m.VoitureModule),
+  //   canActivate: [
+  //     IsSignedInGuard
+  //   ]
+  // // },
+  // {
+  //   path: 'moto',
+  //   loadChildren: () => import('./moto/moto.module').then(m => m.MotoModule),
+  //   canActivate: [
+  //     IsSignedInGuard
+  //   ]
+  // },
+  // {
+  //   path: 'bateau',
+  //   loadChildren: () => import('./bateau/bateau.module').then(m => m.BateauModule),
+  //   canActivate: [
+  //     IsSignedInGuard
+  //   ]
+  // },
+  // {
+  //   path: 'camion',
+  //   loadChildren: () => import('./camion/camion.module').then(m => m.CamionModule),
+  //   canActivate: [
+  //     IsSignedInGuard
+  //   ]
+  // },
 ];
 
 @NgModule({
