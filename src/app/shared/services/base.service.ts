@@ -17,25 +17,24 @@ export class BaseService {
     ) {
         this.url = `${this.baseUrl}/${url}`;
     }
-
+    // renvoie un observable contenant un tableau d'éléments 
     find<T>(params?): Observable<T[]> {
         return this.http.get<T[]>(this.url, { params });
     }
-
+    //  renvoie un observable contnenant un objet 
+    // correspondant à l'id de l'élément en paramètre
     findById<T>(id): Observable<T> {
         return this.http.get<T>(`${ this.url }/${ id }`);
     }
-
-    create<T>(param) { 
-        console.log(this.url);
-                     
+    // déclenche le flux de création
+    create<T>(param) {                          
         return this.http.post<T>(this.url, param);
     }
-
+    //déclenche le flux d'édition 
     edit<T>(id: string, param) {
         return this.http.put<T>(`${ this.url }/${ id }`, param);
     }
-
+    // déclenche le flux de suppression
     delete<T>(id) {
         return this.http.delete<T>(`${ this.url }/${ id }`);
     }

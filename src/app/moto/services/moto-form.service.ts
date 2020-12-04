@@ -6,13 +6,15 @@ import { Moto } from '../interfaces/moto-form.interface';
 @Injectable({
   providedIn: 'root'
 })
+//  MotoFormservice étend BaseService: 
+// je peux appeler les méthodes de BaseService depuis MotoFormService
+// depuis un composant MotoFormService.find() sera accessible
 export class MotoFormService extends BaseService {
-
-  private liste: Moto[] = [];
 
   constructor(
     protected http: HttpClient
   ) {
+    // "super" sert à appeler le constructor parent (ici BaseService)
     super(http, 'motos');
   }
 }
