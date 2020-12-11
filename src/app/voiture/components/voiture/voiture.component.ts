@@ -25,7 +25,7 @@ export class VoitureComponent implements OnInit, OnDestroy {
   couleurId: Couleur[] = [];
   liste: Voiture[] = [];
   displayColumns: string [] = [
-    'marque', 'type', 'couleur', 'date', 'observation', 'email','option1', 'option2'
+    'marque', 'type', 'couleur', 'date', 'observation', 'email', 'status', 'option1', 'option2'
   ];
   subVoiture: Subscription;
 
@@ -36,10 +36,10 @@ export class VoitureComponent implements OnInit, OnDestroy {
     this.initForm();
   }
 
-  ngOnInit(): void { 
-    this.findVoiture();   
+  ngOnInit(): void {
+    this.findVoiture();
   }
-  
+
   ngOnDestroy() {
     if (this.subVoiture) {
       this.subVoiture.unsubscribe();
@@ -53,17 +53,17 @@ export class VoitureComponent implements OnInit, OnDestroy {
       couleurId: [null, Validators.required],
       date:[null],
       observation: [null],
-      email: [null, [Validators.required, Validators.email]]    
+      email: [null, [Validators.required, Validators.email]]
     });
   }
-  
+
   findVoiture() {
     this.subVoiture = this.vs.find<Voiture>().subscribe(
-      (voitures: Voiture[]) => { 
+      (voitures: Voiture[]) => {
         this.liste = voitures;
         this.myTable.renderRows();
       }
-    );    
+    );
   }
 
   submit(value: Voiture) {
@@ -79,7 +79,7 @@ export class VoitureComponent implements OnInit, OnDestroy {
 
     this.onReset();
   }
-  
+
   onReset() {
     this.carForm.resetForm();
     this.form.reset();
@@ -104,6 +104,12 @@ export class VoitureComponent implements OnInit, OnDestroy {
 
   supprimer(id: string) {
     this.vs.delete(id).subscribe(
+      () => this.findVoiture()
+    );
+  }
+
+  changeStatus(voiture) {
+    this.vs.editDispo(voiture.id).subscribe(
       () => this.findVoiture()
     );
   }

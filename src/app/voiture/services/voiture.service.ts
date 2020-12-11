@@ -6,7 +6,7 @@ import { Voiture } from '../interfaces/voiture.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class VoitureService extends BaseService {  
+export class VoitureService extends BaseService {
 
   private liste: Voiture[] = [];
 
@@ -14,5 +14,9 @@ export class VoitureService extends BaseService {
     protected http: HttpClient
   ){
     super(http, 'voitures');
+  }
+
+  editDispo(id: string) {
+    return this.http.put(`${ this.url }/${ id }/dispo`, {});
   }
 }

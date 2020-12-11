@@ -4,6 +4,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import {MatCardModule} from "@angular/material/card";
+import {MatChipsModule} from "@angular/material/chips";
 
 
 const routes: Routes = [
@@ -19,7 +21,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    MatCardModule,
+    MatChipsModule
   ]
 })
 export class LandingsPageModule { }

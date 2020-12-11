@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormGroup, FormGroupDirective} from '@angular/forms';
 import { Bateau } from 'src/app/bateau/interfaces/bateau.interface';
 import { BateauService } from 'src/app/bateau/services/bateau.service';
 import { Camion } from 'src/app/camion/interfaces/camion.interface';
@@ -7,6 +8,7 @@ import { Moto } from 'src/app/moto/interfaces/moto-form.interface';
 import { MotoFormService } from 'src/app/moto/services/moto-form.service';
 import { Voiture } from 'src/app/voiture/interfaces/voiture.interface';
 import { VoitureService } from 'src/app/voiture/services/voiture.service';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -14,6 +16,8 @@ import { VoitureService } from 'src/app/voiture/services/voiture.service';
 })
 export class HomePageComponent implements OnInit {
   selector: string;
+  form: FormGroup;
+  voiture: Voiture;
   voitures: Voiture[];
   bateaux: Bateau[];
   motos: Moto[];
@@ -56,6 +60,12 @@ export class HomePageComponent implements OnInit {
   findCamions() {
     this.cs.find().subscribe(
       (camions: Camion[]) => this.camions = camions
+    );
+  }
+
+  changeStatus(voiture) {
+    this.vs.editDispo(voiture.id).subscribe(
+      () => this.findVoitures()
     );
   }
 }
