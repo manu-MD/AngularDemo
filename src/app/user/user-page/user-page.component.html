@@ -1,9 +1,9 @@
-<h3>INSCRIPTION</h3>
+<h3>NOUVELLE UTILISATEUR</h3>
 
 <!-- Vue de la page d'indentification du formulaire (inscription et connexion) -->
 
 <app-user-form [user]="user" (submited)="submited()"></app-user-form>
-
+<br>
 <app-user-liste [users]="users" (updated)="toUpdate($event)" (deleted)="findUser()"></app-user-liste>
 
 

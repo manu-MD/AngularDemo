@@ -21,7 +21,7 @@ export class UserListeComponent implements OnChanges {
   form: FormGroup;
   subUser: Subscription;
   displayColumns: string[] = [
-    'firstName', 'lastName', 'email','option1', 'option2'
+    'firstName', 'lastName', 'email', 'role', 'option1', 'option2'
   ];
 
   constructor(
@@ -29,23 +29,23 @@ export class UserListeComponent implements OnChanges {
   ) { }
 
   ngOnChanges(values: SimpleChanges) {
-    if (values['users'] && values['users'].currentValue) {
-      this.users = values['users'].currentValue;
-      console.log("refresh des users", this.users);
+    if (values.users && values.users.currentValue) {
+      this.users = values.users.currentValue;
+      console.log('refresh des users', this.users);
 
     }
   }
 
   modifier(user: User) {
-    console.log("élément à modifier depuis la liste", user);
+    console.log('élément à modifier depuis la liste', user);
     this.updated.emit(user);
-  
+
   }
 
   supprimer(id: string) {
     this.us.delete(id).subscribe(
       () => {
-        console.log("élément de la liste supprimé et envoi de l'emit");
+        console.log('élément de la liste supprimé et envoi de l\'emit');
         this.deleted.emit();
       });
   }

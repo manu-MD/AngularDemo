@@ -2,6 +2,12 @@
 <!-- Vue du formulaire d'inscription -->
 
 <form [formGroup]="form" (submit)="submit(form.value)">
+  <mat-radio-group formControlName="role">
+    <mat-radio-button value="User">user</mat-radio-button>
+    <mat-radio-button value="Admin">admin</mat-radio-button>
+  </mat-radio-group>
+
+  <br><br>
 
     <mat-form-field class="input-width" appearance="fill">
         <input matInput placeholder="Votre nom" formControlName="lastName">

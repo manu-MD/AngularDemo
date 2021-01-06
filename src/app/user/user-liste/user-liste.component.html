@@ -3,37 +3,41 @@
 
 <table #myTable mat-table [dataSource]="users" class="mat-elevation-z8">
 
-    
-    <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef> Nom </th>
-        <td mat-cell *matCellDef="let l"> {{l.lastName}}  </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef> Prénom </th>
-        <td mat-cell *matCellDef="let l"> {{ l.firstName }} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let l"> {{ l.email }} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="option1">
-        <th mat-header-cell *matHeaderCellDef> Option </th>
-        <td mat-cell *matCellDef="let l"> 
-            <button mat-raised-button color="primary" (click)="modifier(l)" type="button">Modifier</button>
-        </td>
-    </ng-container>
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef> Nom </th>
+    <td mat-cell *matCellDef="let l"> {{l.lastName}}  </td>
+  </ng-container>
 
-    <ng-container matColumnDef="option2">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let l"> 
-            <button mat-raised-button color="primary" (click)="supprimer(l.id)" type="button">Supprimer</button>
-        </td>
-    </ng-container>
-    
-    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef> Prénom </th>
+    <td mat-cell *matCellDef="let l"> {{ l.firstName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let l"> {{ l.email }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef> Role </th>
+    <td mat-cell *matCellDef="let l"> {{ l.role }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="option1">
+    <th mat-header-cell *matHeaderCellDef> Option </th>
+    <td mat-cell *matCellDef="let l">
+      <button mat-raised-button color="primary" (click)="modifier(l)" type="button">Modifier</button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="option2">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let l">
+      <button mat-raised-button color="primary" (click)="supprimer(l.id)" type="button">Supprimer</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
 
 </table>

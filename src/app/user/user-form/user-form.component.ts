@@ -5,7 +5,7 @@ import { User } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-user-form', 
+  selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
@@ -13,8 +13,8 @@ export class UserFormComponent implements OnChanges, OnDestroy {
 
   @Input() user: User;  // Rempli uniquement en mode modification
   @Output() submited: EventEmitter<any> = new EventEmitter<any>();
-  
-  form: FormGroup; 
+
+  form: FormGroup;
   hide = true;
   subUser: Subscription;
 
@@ -26,41 +26,42 @@ export class UserFormComponent implements OnChanges, OnDestroy {
    }
 
    ngOnChanges(values: SimpleChanges) {
-     if (values['user'] && values['user'].currentValue) {
-       this.user = values['user'].currentValue;
-        console.log("élément reçu à modifier", this.user);
-       this.form.patchValue({ 
+     if (values.user && values.user.currentValue) {
+       this.user = values.user.currentValue;
+       console.log('élément reçu à modifier', this.user);
+       this.form.patchValue({
          email: this.user.email,
          lastName: this.user.lastName,
-         firstName: this.user.firstName
+         firstName: this.user.firstName,
+         role: this.user.role
        });
      }
    }
 
-  submit(value : User) {
+  submit(value: User) {
     if ( this.user && this. user.id) {
       this.us.edit(this.user.id, value).subscribe(
-        () =>{
-          console.log("élément modifié et envoi de l'emit");
+        () => {
+          console.log('élément modifié et envoi de l\'emit');
           this.submited.emit();
 
         }
-      )
+      );
     } else{
       this.us.create(value).subscribe(
-        () => {           
-          console.log("élément créé et envoi de l'emit");
+        () => {
+          console.log('élément créé et envoi de l\'emit');
           this.submited.emit(value);
         }
       );
     }
     this.onReset();
-  };
+  }
 
   onReset() {
     this.form.reset();
   }
-  
+
   ngOnDestroy() {
     if (this.subUser) {
       this.subUser.unsubscribe();
@@ -72,7 +73,8 @@ export class UserFormComponent implements OnChanges, OnDestroy {
       lastName: [null, Validators.required],
       firstName: [null, Validators.required],
       email: [ null, [Validators.required, Validators.email]],
-      password: [null, Validators.required],   
+      password: [null, Validators.required],
+      role: [null, Validators.required],
     });
   }
 }

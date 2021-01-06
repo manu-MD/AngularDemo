@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Role, User} from '../../user/interfaces/user.interface';
 
 @Component({
   selector: 'app-layout-in',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutInComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 }
