@@ -11,8 +11,7 @@
     <div *ngIf="voitures && selector === 'Voiture'">
       <h3>Voitures</h3>
       <mat-card class="product-card" *ngFor="let voiture of voitures">
-        <img mat-card-image
-             src="https://st2.depositphotos.com/2268879/7526/v/600/depositphotos_75266819-stock-illustration-car-silhouette-modern.jpg" alt="">
+        <span style="font-size: 120px;" class="material-icons">drive_eta</span>
         <mat-card-content>
           <mat-chip-list aria-label="">
             <mat-chip class="chip" *ngIf="voiture.status">
@@ -27,30 +26,36 @@
       </mat-card>
     </div>
 
-    <div *ngIf="motos && selector === 'Moto'">
-        <h3>Motos</h3>
-        <div *ngFor="let moto of motos">
-            <p>MARQUE : {{ moto.marque.name }}</p>
-            <p>OBSERVATION : {{ moto.renseignement }}</p>
-            <hr>
-        </div>
-    </div>
+  <div *ngIf="motos && selector === 'Moto'">
+    <h3>Motos</h3>
+    <mat-card class="product-card" *ngFor="let moto of motos">
+      <span style="font-size: 120px;" class="material-icons">two_wheeler</span>
+      <mat-card-content>
+        <p>MARQUE : {{ moto.marque.name }}</p>
+        <p>OBSERVATION : {{ moto.renseignement }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-    <div *ngIf="bateaux && selector === 'Bateau'">
-        <h3>Bateaux</h3>
-        <div *ngFor="let bateau of bateaux">
-            <p>MARQUE : {{ bateau.marque.name }}</p>
-            <p>OBSERVATION : {{ bateau.renseignement }}</p>
-            <hr>
-        </div>
-    </div>
+  <div *ngIf="bateaux && selector === 'Bateau'">
+    <h3>Bateaux</h3>
+    <mat-card class="product-card" *ngFor="let bateau of bateaux">
+      <span style="font-size: 120px;" class="material-icons">directions_boat</span>
+      <mat-card-content>
+        <p>MARQUE : {{ bateau.marque.name }}</p>
+        <p>OBSERVATION : {{ bateau.renseignement }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-    <div *ngIf="camions && selector === 'Camion'">
-        <h3>Camions</h3>
-        <div *ngFor="let camion of camions">
-            <p>MARQUE : {{ camion.marque.name }}</p>
-            <p>OBSERVATION : {{ camion.renseignement }}</p>
-            <hr>
-        </div>
-    </div>
+  <div *ngIf="camions && selector === 'Camion'">
+    <h3>Camions</h3>
+    <mat-card class="product-card" *ngFor="let camion of camions">
+      <span style="font-size: 120px;" class="material-icons">airport_shuttle</span>
+      <mat-card-content>
+        <p>MARQUE : {{ camion.marque.name }}</p>
+        <p>OBSERVATION : {{ camion.renseignement }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

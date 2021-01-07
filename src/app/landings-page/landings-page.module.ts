@@ -10,7 +10,7 @@ import {MatChipsModule} from "@angular/material/chips";
 
 const routes: Routes = [
   {
-    path: 'accueil',
+    path: '',
     component: HomePageComponent
   },
 ];
