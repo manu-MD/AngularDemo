@@ -4,6 +4,8 @@ import { IsSignedInGuard } from './is-loggued.guard';
 import { LayoutInComponent } from './shared/layout-in/layout-in.component';
 import { LayoutOutComponent } from './shared/layout-out/layout-out.component';
 import { LogOutComponent } from './shared/log-out/log-out.component';
+import {AuthGuard} from './auth.guard';
+import {Role} from './user/interfaces/user.interface';
 
 const routes: Routes = [
 
@@ -30,6 +32,8 @@ const routes: Routes = [
   {
     path:'in',
     component: LayoutInComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] },
     canActivateChild: [
       IsSignedInGuard
     ],
@@ -67,7 +71,7 @@ const routes: Routes = [
         loadChildren: () => import('./couleur/couleur.module').then(m => m.CouleurModule),
       }
     ]
-  }, 
+  },
 
   // {
   //   path: 'user',

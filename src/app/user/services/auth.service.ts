@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/shared/services/base.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import {tap} from "rxjs/operators";
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService  extends BaseService {
 
-  static role: string;
+  role: string;
 
   constructor(
     protected http: HttpClient,
@@ -29,8 +29,8 @@ export class AuthService  extends BaseService {
     return this.http.post(this.url + '/login', { email, password }).pipe(tap((res: any) => {
       localStorage.setItem('token', res.access_token);
       const token = this.jwtHelper.decodeToken(res.access_token);
-      AuthService.role = token.role;
-      console.log(AuthService.role);
+      this.role = token.role;
+      console.log(this.role);
     }));
   }
 
