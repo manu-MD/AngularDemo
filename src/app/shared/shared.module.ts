@@ -16,6 +16,7 @@ import { LayoutInComponent } from './layout-in/layout-in.component';
 import { LayoutOutComponent } from './layout-out/layout-out.component';
 import { RouterModule } from '@angular/router';
 import { LogOutComponent } from './log-out/log-out.component';
+import { LoginInUserComponent } from './login-in-user/login-in-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LogOutComponent } from './log-out/log-out.component';
     FieldTypeComponent,
     LayoutInComponent,
     LayoutOutComponent,
-    LogOutComponent
+    LogOutComponent,
+    LoginInUserComponent
   ],
   imports: [
     CommonModule,

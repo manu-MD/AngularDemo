@@ -15,6 +15,7 @@ import {environment} from '../environments/environment.prod';
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     CommonModule,

@@ -4,8 +4,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import {MatCardModule} from "@angular/material/card";
-import {MatChipsModule} from "@angular/material/chips";
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 const routes: Routes = [

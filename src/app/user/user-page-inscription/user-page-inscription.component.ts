@@ -19,11 +19,11 @@ export class UserPageInscriptionComponent implements OnInit {
   }
 
   submited(value) {
-    console.log(value);    
+    console.log(value);
     this.as.login(value.email, value.password).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.access_token);
-        this.router.navigate(['/in'])
+        this.router.navigate(['/admin'])
       }
     )
   }

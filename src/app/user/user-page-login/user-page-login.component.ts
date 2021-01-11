@@ -38,7 +38,7 @@ export class UserPageLoginComponent implements OnInit {
     this.as.login(value.email, value.password).subscribe(
       (res: any) => {
         // redirection vers la page d'accueil de la partie privée
-        this.router.navigate(['/in']);
+        this.router.navigate(['/admin']);
       }
     );
   }

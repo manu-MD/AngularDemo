@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { IsSignedInGuard } from './is-loggued.guard';
-import { LayoutInComponent } from './shared/layout-in/layout-in.component';
-import { LayoutOutComponent } from './shared/layout-out/layout-out.component';
-import { LogOutComponent } from './shared/log-out/log-out.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {IsSignedInGuard} from './is-loggued.guard';
+import {LayoutInComponent} from './shared/layout-in/layout-in.component';
+import {LayoutOutComponent} from './shared/layout-out/layout-out.component';
+import {LogOutComponent} from './shared/log-out/log-out.component';
+import {LoginInUserComponent} from './shared/login-in-user/login-in-user.component';
 import {AuthGuard} from './auth.guard';
 import {Role} from './user/interfaces/user.interface';
 
 const routes: Routes = [
 
   {
-    path:'',
+    path: '',
     component: LayoutOutComponent,
     children: [
       {
@@ -23,20 +24,11 @@ const routes: Routes = [
       }
     ]
   },
-
   {
-    path: 'logout',
-    component: LogOutComponent
-  },
-
-  {
-    path:'in',
+    path: 'admin',
     component: LayoutInComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.Admin] },
-    canActivateChild: [
-      IsSignedInGuard
-    ],
     children: [
       {
         path: '',
@@ -69,42 +61,26 @@ const routes: Routes = [
       {
         path: 'couleur',
         loadChildren: () => import('./couleur/couleur.module').then(m => m.CouleurModule),
-      }
+      },
     ]
   },
 
-  // {
-  //   path: 'user',
-  //   loadChildren: () => import('./user/user.module').then(m => m.UserModule)
-  // },
-  // {
-  //   path: 'voiture',
-  //   loadChildren: () => import('./voiture/voiture.module').then(m => m.VoitureModule),
-  //   canActivate: [
-  //     IsSignedInGuard
-  //   ]
-  // // },
-  // {
-  //   path: 'moto',
-  //   loadChildren: () => import('./moto/moto.module').then(m => m.MotoModule),
-  //   canActivate: [
-  //     IsSignedInGuard
-  //   ]
-  // },
-  // {
-  //   path: 'bateau',
-  //   loadChildren: () => import('./bateau/bateau.module').then(m => m.BateauModule),
-  //   canActivate: [
-  //     IsSignedInGuard
-  //   ]
-  // },
-  // {
-  //   path: 'camion',
-  //   loadChildren: () => import('./camion/camion.module').then(m => m.CamionModule),
-  //   canActivate: [
-  //     IsSignedInGuard
-  //   ]
-  // },
+  {
+    path: 'user',
+    component: LoginInUserComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.User, Role.Admin] },
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./landings-page/landings-page.module').then(m => m.LandingsPageModule)
+      },
+    ]
+  },
+  {
+    path: 'logout',
+    component: LogOutComponent
+  },
 ];
 
 @NgModule({

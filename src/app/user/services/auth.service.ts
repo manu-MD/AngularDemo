@@ -16,6 +16,7 @@ export class AuthService  extends BaseService {
     public jwtHelper: JwtHelperService
   ) {
     super(http, 'auth');
+    this.setRole();
   }
 
   static getToken() {
@@ -28,10 +29,17 @@ export class AuthService  extends BaseService {
     // localStorage.setItem('token', res.access_token);
     return this.http.post(this.url + '/login', { email, password }).pipe(tap((res: any) => {
       localStorage.setItem('token', res.access_token);
-      const token = this.jwtHelper.decodeToken(res.access_token);
-      this.role = token.role;
+      this.setRole();
       console.log(this.role);
     }));
+  }
+
+  private setRole() {
+    const accessToken =  localStorage.getItem('token');
+    if (accessToken){
+      const token = this.jwtHelper.decodeToken(accessToken);
+      this.role = token.role;
+    }
   }
 
 }
