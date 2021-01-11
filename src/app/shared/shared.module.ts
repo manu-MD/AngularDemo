@@ -10,13 +10,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FieldColorComponent } from './field-color/field-color.component';
 import { FieldMarqueComponent } from './field-marque/field-marque.component';
 import { FieldTypeComponent } from './field-type/field-type.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { LayoutInComponent } from './layout-in/layout-in.component';
 import { LayoutOutComponent } from './layout-out/layout-out.component';
 import { RouterModule } from '@angular/router';
 import { LogOutComponent } from './log-out/log-out.component';
 import { LoginInUserComponent } from './login-in-user/login-in-user.component';
+import {FileUploadComponent} from './file-upload/file-upload.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { LoginInUserComponent } from './login-in-user/login-in-user.component';
     LayoutInComponent,
     LayoutOutComponent,
     LogOutComponent,
-    LoginInUserComponent
+    LoginInUserComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +43,10 @@ import { LoginInUserComponent } from './login-in-user/login-in-user.component';
     MatDatepickerModule,
     ReactiveFormsModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    FormsModule,
+    MatToolbarModule
   ],
   exports: [
     MatButtonModule,

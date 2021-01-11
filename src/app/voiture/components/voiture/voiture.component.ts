@@ -7,6 +7,8 @@ import { Marque } from 'src/app/shared/interfaces/marque.interface';
 import { TypeInterface } from 'src/app/shared/interfaces/typeInterface.interface';
 import { Voiture } from '../../interfaces/voiture.interface';
 import { VoitureService } from '../../services/voiture.service';
+import {FileUploadComponent} from '../../../shared/file-upload/file-upload.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-voiture',
@@ -32,6 +34,7 @@ export class VoitureComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private vs: VoitureService,
+    public dialog: MatDialog
   ) {
     this.initForm();
   }
@@ -97,7 +100,7 @@ export class VoitureComponent implements OnInit, OnDestroy {
           date: this.voiture.date,
           observation: this.voiture.observation,
           email: this.voiture.email
-        })
+        });
       }
     );
   }
@@ -112,5 +115,9 @@ export class VoitureComponent implements OnInit, OnDestroy {
     this.vs.editDispo(voiture.id).subscribe(
       () => this.findVoiture()
     );
+  }
+
+  openDialog() {
+    this.dialog.open(FileUploadComponent);
   }
 }

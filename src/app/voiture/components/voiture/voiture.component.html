@@ -1,83 +1,89 @@
 <form [formGroup]="form" (ngSubmit)="submit(form.value)" #carForm="ngForm">
   <br>
 
-    <h3>VOITURE</h3>
+  <h3>VOITURE</h3>
 
-    <app-field-marque class="input-width" category="Voiture" [formGroup]="form" controlName="marqueId"></app-field-marque>
+  <button mat-flat-button (click)="openDialog()">
+    Ajouter une photo
+    <mat-icon>photo_library</mat-icon>
+  </button>
+  <br>
 
-    <br>
+  <app-field-marque class="input-width" category="Voiture" [formGroup]="form" controlName="marqueId"></app-field-marque>
 
-    <app-field-type class="input-width" category="Voiture" [formGroup]="form" controlName="typeId"></app-field-type>
+  <br>
 
-   <br>
+  <app-field-type class="input-width" category="Voiture" [formGroup]="form" controlName="typeId"></app-field-type>
 
-    <app-field-color class="input-width" [formGroup]="form" controlName="couleurId"></app-field-color>
+  <br>
 
-   <br>
+  <app-field-color class="input-width" [formGroup]="form" controlName="couleurId"></app-field-color>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Saisissez une date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+  <br>
 
-    <br>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Saisissez une date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-    <mat-form-field class="input-width">
+  <br>
+
+  <mat-form-field class="input-width">
         <textarea matInput id="observation" formControlName="observation"
-            placeholder="saisissez votre demande">
+                  placeholder="saisissez votre demande">
         </textarea>
-    </mat-form-field>
+  </mat-form-field>
 
-    <br>
+  <br>
 
-    <mat-form-field class="input-width">
-        <input matInput placeholder="Entrez votre email" formControlName="email" required>
-    </mat-form-field>
+  <mat-form-field class="input-width">
+    <input matInput placeholder="Entrez votre email" formControlName="email" required>
+  </mat-form-field>
 
   <br>
 
   <div class="boutonsForms">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Valider</button>
-        <button mat-raised-button type="reset" (click)="onReset()">Initialiser</button>
-    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Valider</button>
+    <button mat-raised-button type="reset" (click)="onReset()">Initialiser</button>
+  </div>
 
-    <br>
+  <br>
 
 </form>
 
 <table #myTable mat-table [dataSource]="liste" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="marque">
-        <th mat-header-cell *matHeaderCellDef> Marque </th>
-        <td mat-cell *matCellDef="let l"> {{ l.marque.name}} </td>
-    </ng-container>
+  <ng-container matColumnDef="marque">
+    <th mat-header-cell *matHeaderCellDef> Marque </th>
+    <td mat-cell *matCellDef="let l"> {{ l.marque.name}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef> Type </th>
-        <td mat-cell *matCellDef="let l"> {{l.type.type}} </td>
-    </ng-container>
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let l"> {{l.type.type}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="couleur">
-        <th mat-header-cell *matHeaderCellDef> Couleur </th>
-        <td mat-cell *matCellDef="let l"> {{l.couleur.couleur}} </td>
-    </ng-container>
+  <ng-container matColumnDef="couleur">
+    <th mat-header-cell *matHeaderCellDef> Couleur </th>
+    <td mat-cell *matCellDef="let l"> {{l.couleur.couleur}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
-        <td mat-cell *matCellDef="let l"> {{l.date | date:"EEEE dd MMMM yyyy"}} </td>
-    </ng-container>
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let l"> {{l.date | date:"EEEE dd MMMM yyyy"}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="observation">
-        <th mat-header-cell *matHeaderCellDef> Observation </th>
-        <td mat-cell *matCellDef="let l"> {{l.observation}} </td>
-    </ng-container>
+  <ng-container matColumnDef="observation">
+    <th mat-header-cell *matHeaderCellDef> Observation </th>
+    <td mat-cell *matCellDef="let l"> {{l.observation}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let l"> {{l.email}} </td>
-    </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let l"> {{l.email}} </td>
+  </ng-container>
 
   <ng-container matColumnDef="status">
     <th mat-header-cell *matHeaderCellDef> Status </th>
@@ -91,21 +97,21 @@
     </td>
   </ng-container>
 
-    <ng-container matColumnDef="option1">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let l" class="boutonsForms">
-          <button mat-raised-button color="primary" (click)="modifier(l.id)" type="button">Modifier</button>
-          <button mat-raised-button color="primary" (click)="changeStatus(l)" type="button">Réserver</button>
-        </td>
-    </ng-container>
+  <ng-container matColumnDef="option1">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let l" class="boutonsForms">
+      <button mat-raised-button color="primary" (click)="modifier(l.id)" type="button">Modifier</button>
+      <button mat-raised-button color="primary" (click)="changeStatus(l)" type="button">Réserver</button>
+    </td>
+  </ng-container>
 
-    <ng-container matColumnDef="option2">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let l">
-            <button mat-raised-button color="primary" (click)="supprimer(l.id)" type="button">Supprimer</button>
-        </td>
-    </ng-container>
+  <ng-container matColumnDef="option2">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let l">
+      <button mat-raised-button color="primary" (click)="supprimer(l.id)" type="button">Supprimer</button>
+    </td>
+  </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
 </table>

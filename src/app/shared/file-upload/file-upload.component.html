@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Photo du véhicule</h1>
+<div mat-dialog-content>Ajouter une photo de votre véhicule :</div>
+<mat-form-field>
+  <div>
+    <mat-toolbar>
+      <!-- Display files names -->
+      <label id="uploadLabel">
+        <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+      </label>
+
+      <!-- Browse Button -->
+      <button mat-flat-button color="primary">
+        Ajouter
+      </button>
+    </mat-toolbar>
+
+    <!-- Fetch selected filed on change -->
+    <input type="file" #fileInput id="uploadFile" (change)="uploadFileEvt($event)" name="uploadFile" multiple="multiple"
+           accept="image/*" />
+  </div>
+</mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close mat-flat-button>Fermer</button>
+</div>
