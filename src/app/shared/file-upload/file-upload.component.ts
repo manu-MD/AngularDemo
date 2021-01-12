@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-file-upload',
@@ -6,36 +6,49 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
-  @ViewChild('fileInput') fileInput: ElementRef;
-  fileAttr = 'Choix de votre fichier';
+  base64File: string = null;
+  filename: string = null;
+  private file: File;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  uploadFileEvt(imgFile: any) {
-    if (imgFile.target.files && imgFile.target.files[0]) {
-      this.fileAttr = '';
-      Array.from(imgFile.target.files).forEach((file: File) => {
-        this.fileAttr += file.name + ' - ';
+  onFileSelect(fileChangeEvent: any): void {
+    try {
+      const file = fileChangeEvent.target.files[0];
+      const fReader = new FileReader();
+      fReader.readAsDataURL(file);
+      fReader.onloadend = (event: any) => {
+        this.filename = file.name;
+        this.base64File = event.target.result;
+      };
+    } catch (error) {
+      this.filename = null;
+      this.base64File = null;
+      console.log('no file was selected...');
+    }
+
+    this.file = fileChangeEvent.target.files[0];
+  }
+
+  async submitForm() {
+    const formData = new FormData();
+    formData.append('photo', this.file, this.file.name);
+
+    try {
+      const response = await fetch('http://localhost:3000/photos/upload', {
+        method: 'POST',
+        body: formData,
       });
 
-      // HTML5 FileReader API
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const image = new Image();
-        image.src = e.target.result;
-        image.onload = rs => {
-          const imgBase64Path = e.target.result;
-        };
-      };
-      reader.readAsDataURL(imgFile.target.files[0]);
-
-      // Reset if duplicate image uploaded again
-      this.fileInput.nativeElement.value = '';
-    } else {
-      this.fileAttr = 'Choose File';
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      console.log(response);
+    } catch (err) {
+      console.log(err);
     }
   }
 }

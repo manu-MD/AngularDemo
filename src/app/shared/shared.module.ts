@@ -20,6 +20,7 @@ import { LoginInUserComponent } from './login-in-user/login-in-user.component';
 import {FileUploadComponent} from './file-upload/file-upload.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     RouterModule,
     MatDialogModule,
     FormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTooltipModule
   ],
   exports: [
     MatButtonModule,
