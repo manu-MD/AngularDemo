@@ -4,6 +4,7 @@ import { MarqueHomePageComponent } from './marque-home-page/marque-home-page.com
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import {MatCardModule} from "@angular/material/card";
 
 const routes: Routes = [
   {
@@ -16,13 +17,14 @@ const routes: Routes = [
   declarations: [
     MarqueHomePageComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,  
-    RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    SharedModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        RouterModule.forChild(routes),
+        ReactiveFormsModule,
+        SharedModule,
+        MatCardModule
+    ],
   exports: [
     RouterModule
   ]

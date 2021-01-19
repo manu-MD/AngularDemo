@@ -1,21 +1,23 @@
-<h1 mat-dialog-title>Photo du véhicule</h1>
-<div mat-dialog-content>Ajouter une photo de votre véhicule :</div>
-<mat-form-field floatPlaceholder="never">
-  <input [hidden]="true" (change)="onFileSelect($event)" type="file" accept="all/*" #fileSelect>
-  <label>
-    <input readonly matInput [(ngModel)]="filename" placeholder="Choisir un fichier..."/>
-  </label>
-  <button *ngIf="this.base64File" (click)="this.base64File = null; this.filename = null" matSuffix matTooltip="Supprimer le fichier"
-          [matTooltipPosition]="'above'" type="button" color="warn" mat-icon-button>
-    <mat-icon>close</mat-icon>
-  </button>
-  <button matSuffix mat-icon-button (click)="fileSelect.click();"  matTooltip="Séléctionné le fichier" [matTooltipPosition]="'above'">
-    <mat-icon>file_upload</mat-icon>
-  </button>
-</mat-form-field>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close mat-flat-button>Fermer</button>
-  <button mat-flat-button color="primary" (click)="submitForm()">
-    Valider
-  </button>
-</div>
+<!--<h1 mat-dialog-title>Photo du véhicule</h1>-->
+<!--<div mat-dialog-content>Ajouter une photo de votre véhicule :</div>-->
+<!--<mat-form-field>-->
+<!--  <input [hidden]="true" (change)="onFileSelect($event)" type="file" accept="all/*" #fileSelect>-->
+<!--  <label>-->
+<!--    <input readonly matInput [(ngModel)]="filename" placeholder="Choisir un fichier..."/>-->
+<!--  </label>-->
+<!--  <button *ngIf="this.base64File" (click)="this.filename = null" matSuffix matTooltip="Supprimer le fichier"-->
+<!--          [matTooltipPosition]="'above'" type="button" color="warn" mat-icon-button>-->
+<!--    <mat-icon>close</mat-icon>-->
+<!--  </button>-->
+<!--  <button matSuffix mat-icon-button (click)="fileSelect.click();"  matTooltip="Séléctionné le fichier" [matTooltipPosition]="'above'">-->
+<!--    <mat-icon>file_upload</mat-icon>-->
+<!--  </button>-->
+<!--</mat-form-field>-->
+
+<!--<div mat-dialog-actions>-->
+<!--  <button mat-button mat-dialog-close mat-flat-button>Fermer</button>-->
+<!--  <button mat-flat-button color="primary" (click)="submitForm()">-->
+<!--    Valider-->
+<!--  </button>-->
+<!--</div>-->
+

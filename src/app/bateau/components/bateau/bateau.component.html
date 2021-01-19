@@ -1,82 +1,85 @@
+<div class="card">
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="submit(form.value)" #boatForm="ngForm">
+      <br>
 
-<form [formGroup]="form" (ngSubmit)="submit(form.value)" #boatForm="ngForm">
-  <br>
+      <h3>BATEAU</h3>
 
-    <h3>BATEAU</h3>
-
-    <mat-radio-group formControlName="energie">
+      <mat-radio-group formControlName="energie">
         <mat-radio-button value="moteur">Bateau à moteur</mat-radio-button>
         <mat-radio-button value="voile">Bateau à voile</mat-radio-button>
-    </mat-radio-group>
+      </mat-radio-group>
 
-    <br>
+      <br>
 
-    <app-field-marque class="input-width" category="Bateau" [formGroup]="form" controlName="marqueId"></app-field-marque>
+      <app-field-marque class="input-width" category="Bateau" [formGroup]="form" controlName="marqueId"></app-field-marque>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <mat-select formControlName="longueur" placeholder="Sélectionnez la longueur">
-            <mat-option *ngFor="let longueur of longueurs" [value]="longueur.value">
-                {{longueur.name}}
-            </mat-option>
+          <mat-option *ngFor="let longueur of longueurs" [value]="longueur.value">
+            {{longueur.name}}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <mat-select formControlName="place" placeholder="Nombre de places">
-            <mat-option *ngFor="let place of places" [value]="place.value">
-                {{place.name}}
-            </mat-option>
+          <mat-option *ngFor="let place of places" [value]="place.value">
+            {{place.name}}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <mat-select formControlName="puissance" placeholder="Sélectionnez la puissance">
-            <mat-option *ngFor="let puissance of puissances" [value]="puissance.value">
-                {{puissance.name}}
-            </mat-option>
+          <mat-option *ngFor="let puissance of puissances" [value]="puissance.value">
+            {{puissance.name}}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="input-width" appearance="fill">
         <mat-label>Saisissez une date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <textarea matInput id="renseignement" formControlName="renseignement"
-            placeholder="Demande de renseignements">
+                  placeholder="Demande de renseignements">
         </textarea>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <input matInput placeholder="Entrez votre email" formControlName="email" required>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-  <div class="boutonsForms">
+      <div class="boutonsForms">
         <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Valider</button>
         <button mat-raised-button type="reset" (click)="onReset()">Initialiser</button>
 
-    </div>
+      </div>
 
-    <br>
+      <br>
 
-</form>
+    </form>
+  </mat-card>
+</div>
 
 <table #myTable mat-table [dataSource]="liste" class="mat-elevation-z8">
 

@@ -1,30 +1,34 @@
-<form [formGroup]="form" (ngSubmit)="submit(form.value)">
+<div class="card">
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="submit(form.value)">
 
-  <h3>NOUVELLE COULEUR DE VEHICULE</h3>
+      <h3>NOUVELLE COULEUR DE VEHICULE</h3>
 
-  <mat-form-field appearance="fill" class="input-width">
-    <input formControlName="couleur"  matInput placeholder="Saisir la couleur souhaitée">
-  </mat-form-field>
+      <mat-form-field appearance="fill" class="input-width">
+        <input formControlName="couleur"  matInput placeholder="Saisir la couleur souhaitée">
+      </mat-form-field>
 
-  <br>
+      <br>
 
-<!--  <mat-form-field appearance="fill" class="input-width">-->
-<!--    <mat-select formControlName="category" placeholder="catégorie du véhicule">-->
-<!--      <mat-option *ngFor="let category of categories" [value]="category.value">-->
-<!--        {{category.value}}-->
-<!--      </mat-option>-->
-<!--    </mat-select>-->
-<!--  </mat-form-field>-->
+      <!--  <mat-form-field appearance="fill" class="input-width">-->
+      <!--    <mat-select formControlName="category" placeholder="catégorie du véhicule">-->
+      <!--      <mat-option *ngFor="let category of categories" [value]="category.value">-->
+      <!--        {{category.value}}-->
+      <!--      </mat-option>-->
+      <!--    </mat-select>-->
+      <!--  </mat-form-field>-->
 
-  <br>
+      <br>
 
-  <div>
-    <button mat-raised-button color="primary" type="submit">Valider</button>
-  </div>
+      <div>
+        <button mat-raised-button color="primary" type="submit">Valider</button>
+      </div>
 
-  <br>
+      <br>
 
-</form>
+    </form>
+  </mat-card>
+</div>
 
 <table #myTable mat-table [dataSource]="couleurs" class="mat-elevation-z8">
 

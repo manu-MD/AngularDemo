@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { BateauComponent } from './components/bateau/bateau.component';
+import {MatCardModule} from "@angular/material/card";
 
 const routes: Routes = [
   {
@@ -16,13 +17,14 @@ const routes: Routes = [
   declarations: [
     BateauComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        FormsModule,
+        ReactiveFormsModule,
+        SharedModule,
+        MatCardModule
+    ],
   exports: [
     RouterModule
   ]

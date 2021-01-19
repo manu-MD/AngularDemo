@@ -12,6 +12,7 @@
       <h3>Voitures</h3>
       <mat-card class="product-card" *ngFor="let voiture of voitures">
         <span style="font-size: 120px;" class="material-icons">drive_eta</span>
+        <img src="{{voiture.photo}}" alt="">
         <mat-card-content>
           <mat-chip-list aria-label="">
             <mat-chip class="chip" *ngIf="voiture.status">

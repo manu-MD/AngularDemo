@@ -11,4 +11,5 @@ export interface Voiture {
     observation: string;
     email: string;
     status: boolean;
+    photo: any;
 }

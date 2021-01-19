@@ -2,13 +2,11 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MatTable } from '@angular/material/table';
-import { Couleur } from 'src/app/shared/interfaces/couleur.interface';
-import { Marque } from 'src/app/shared/interfaces/marque.interface';
-import { TypeInterface } from 'src/app/shared/interfaces/typeInterface.interface';
 import { Voiture } from '../../interfaces/voiture.interface';
 import { VoitureService } from '../../services/voiture.service';
 import {FileUploadComponent} from '../../../shared/file-upload/file-upload.component';
 import {MatDialog} from '@angular/material/dialog';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-voiture',
@@ -22,9 +20,6 @@ export class VoitureComponent implements OnInit, OnDestroy {
 
   voiture: Voiture;
   form: FormGroup;
-  marqueId: Marque[] = [];
-  typeId: TypeInterface[] = [];
-  couleurId: Couleur[] = [];
   liste: Voiture[] = [];
   displayColumns: string [] = [
     'marque', 'type', 'couleur', 'date', 'observation', 'email', 'status', 'option1', 'option2'
@@ -34,7 +29,8 @@ export class VoitureComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private vs: VoitureService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private http: HttpClient
   ) {
     this.initForm();
   }
@@ -54,9 +50,10 @@ export class VoitureComponent implements OnInit, OnDestroy {
       marqueId: [null, Validators.required],
       typeId: [null, Validators.required],
       couleurId: [null, Validators.required],
-      date:[null],
+      date: [null],
       observation: [null],
-      email: [null, [Validators.required, Validators.email]]
+      email: [null, [Validators.required, Validators.email]],
+      photo: [null]
     });
   }
 
@@ -70,16 +67,22 @@ export class VoitureComponent implements OnInit, OnDestroy {
   }
 
   submit(value: Voiture) {
+    const formData: any = new FormData();
+    console.log(value);
+    for (const [key, data] of Object.entries(value)) {
+      // console.log(`${key}: ${data}`);
+      formData.append(key, data);
+    }
+    // console.log(formData.getAll());
     if (this.voiture && this.voiture.id) {
-      this.vs.edit(this.voiture.id, value).subscribe(
+      this.vs.edit(this.voiture.id, formData).subscribe(
         () => this.findVoiture()
-      )
+      );
     } else {
-      this.vs.create(value).subscribe(
+      this.vs.create(formData).subscribe(
         () => this.findVoiture()
       );
     }
-
     this.onReset();
   }
 
@@ -99,7 +102,8 @@ export class VoitureComponent implements OnInit, OnDestroy {
           couleurId: this.voiture.couleur.id,
           date: this.voiture.date,
           observation: this.voiture.observation,
-          email: this.voiture.email
+          email: this.voiture.email,
+          photo: this.voiture.photo
         });
       }
     );
@@ -117,7 +121,15 @@ export class VoitureComponent implements OnInit, OnDestroy {
     );
   }
 
-  openDialog() {
-    this.dialog.open(FileUploadComponent);
+  // openDialog() {
+  //   this.dialog.open(FileUploadComponent);
+  // }
+
+  uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({
+      photo: file
+    });
+    this.form.get('photo').updateValueAndValidity();
   }
 }

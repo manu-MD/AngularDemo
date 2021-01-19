@@ -30,6 +30,7 @@ export class HomePageComponent implements OnInit {
     private cs: CamionService
   ) { }
   ngOnInit(): void {
+    console.log(this.vs);
   }
   loadVehicules(e) {
     if (e.value === 'Moto') {
@@ -44,7 +45,12 @@ export class HomePageComponent implements OnInit {
   }
   findVoitures() {
     this.vs.find().subscribe(
-      (voitures: Voiture[]) => this.voitures = voitures
+      (voitures: Voiture[]) => {
+        this.voitures = voitures;
+        this.voitures.forEach(voiture => {
+          this.vs.getPhoto(voiture.id).subscribe(photo => voiture.photo = photo);
+        });
+      }
     );
   }
   findMotos() {

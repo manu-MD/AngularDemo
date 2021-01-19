@@ -19,4 +19,9 @@ export class VoitureService extends BaseService {
   editDispo(id: string) {
     return this.http.put(`${ this.url }/${ id }/dispo`, {});
   }
+
+  getPhoto(id: string) {
+    console.log(`${ this.url }/photo/${ id }`);
+    return this.http.get(`${ this.url }/photo/${ id }`);
+  }
 }

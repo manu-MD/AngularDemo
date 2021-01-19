@@ -4,6 +4,7 @@ import { CamionComponent } from './camion.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatCardModule} from "@angular/material/card";
 
 const routes: Routes = [
   {
@@ -16,16 +17,17 @@ const routes: Routes = [
   declarations: [
     CamionComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule.forChild(routes),
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        RouterModule.forChild(routes),
+        FormsModule,
+        ReactiveFormsModule,
+        MatCardModule
+    ],
   exports: [
 RouterModule
-  ] 
+  ]
 })
 
 export class CamionModule { }

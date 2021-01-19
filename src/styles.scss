@@ -9,8 +9,8 @@ body {
 }
 
 .input-width {
-  .mat-form-field-infix {
-    width: 236px !important;
+  .mat-form-field-infix, .mat-form-field-flex {
+    width: 280px !important;
   }
 }
 
@@ -28,6 +28,16 @@ body {
   max-width: 400px;
   margin: auto;
   .mat-card {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}
+
+.card {
+  max-width: 400px;
+  margin: auto;
+  .mat-card {
+    margin: 40px 0 40px 0;
     padding-top: 35px;
     padding-bottom: 35px;
   }

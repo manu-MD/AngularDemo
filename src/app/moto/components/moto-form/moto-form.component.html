@@ -1,60 +1,64 @@
-<form [formGroup]="form" (ngSubmit)="submit(form.value)" #bikeForm="ngForm">
-  <br>
+<div class="card">
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="submit(form.value)" #bikeForm="ngForm">
+      <br>
 
-    <h3>MOTO</h3>
+      <h3>MOTO</h3>
 
-    <app-field-marque class="input-width" category="Moto" [formGroup]="form" controlName="marqueId"></app-field-marque>
+      <app-field-marque class="input-width" category="Moto" [formGroup]="form" controlName="marqueId"></app-field-marque>
 
-    <br>
+      <br>
 
-    <app-field-type class="input-width" category="Moto" [formGroup]="form" controlName="typeId"></app-field-type>
+      <app-field-type class="input-width" category="Moto" [formGroup]="form" controlName="typeId"></app-field-type>
 
-    <br>
+      <br>
 
-    <app-field-color class="input-width" [formGroup]="form" controlName="couleurId"></app-field-color>
+      <app-field-color class="input-width" [formGroup]="form" controlName="couleurId"></app-field-color>
 
-    <br>
+      <br>
 
-    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="input-width" appearance="fill">
         <mat-label>Saisissez une date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-radio-group formControlName="cylindree" >
+      <mat-radio-group formControlName="cylindree" >
         <mat-radio-button value="0">Moins de 600 cm3</mat-radio-button>
         <mat-radio-button value="1">Plus de 600 Cm3</mat-radio-button>
-    </mat-radio-group>
+      </mat-radio-group>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <textarea matInput id="renseignement" formControlName="renseignement"
-            placeholder="Saisissez votre demande">
+                  placeholder="Saisissez votre demande">
         </textarea>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <div>
+      <div>
         <mat-form-field class="input-width">
-            <input matInput placeholder="Entrez votre email" formControlName="email" required>
+          <input matInput placeholder="Entrez votre email" formControlName="email" required>
         </mat-form-field>
-    </div>
+      </div>
 
-    <br>
+      <br>
 
-  <div class="boutonsForms">
+      <div class="boutonsForms">
         <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Valider</button>
         <button mat-raised-button type="reset" (click)="onReset()">Initialiser</button>
-    </div>
+      </div>
 
-<br>
+      <br>
 
-</form>
+    </form>
+  </mat-card>
+</div>
 
 <table #myTable mat-table [dataSource]="liste" class="mat-elevation-z8">
 

@@ -63,7 +63,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     FieldTypeComponent,
     ReactiveFormsModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    FileUploadComponent
 
   ]
 })

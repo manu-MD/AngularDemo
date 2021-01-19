@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { VoitureComponent } from './components/voiture/voiture.component';
 import {MatChipsModule} from "@angular/material/chips";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatCardModule} from "@angular/material/card";
 
 const routes: Routes = [
   {
@@ -23,7 +25,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     SharedModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTooltipModule,
+    MatCardModule
   ],
   exports:[
     RouterModule

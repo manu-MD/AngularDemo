@@ -1,64 +1,68 @@
-<form [formGroup]="form" (ngSubmit)="submit(form.value)" #truckForm="ngForm">
-  <br>
+<div class="card">
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="submit(form.value)" #truckForm="ngForm">
+      <br>
 
-    <h3>CAMION</h3>
+      <h3>CAMION</h3>
 
-    <app-field-marque class="input-width"category="Camion" [formGroup]="form" controlName="marqueId"></app-field-marque>
+      <app-field-marque class="input-width"category="Camion" [formGroup]="form" controlName="marqueId"></app-field-marque>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <mat-select formControlName="genre" placeholder="Sélectionnez le genre">
-            <mat-option *ngFor="let genre of genres" [value]="genre.value">
-                {{genre.name}}
-            </mat-option>
+          <mat-option *ngFor="let genre of genres" [value]="genre.value">
+            {{genre.name}}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <mat-select formControlName="poids" placeholder="Sélectionnez le PTAC">
-            <mat-option *ngFor="let poids of poids" [value]="poids.value">
-                {{poids.name}}
-            </mat-option>
+          <mat-option *ngFor="let poids of poids" [value]="poids.value">
+            {{poids.name}}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="input-width" appearance="fill">
         <mat-label>Saisissez une date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <textarea matInput id="renseignement" formControlName="renseignement"
-            placeholder="Demande de renseignements">
+                  placeholder="Demande de renseignements">
         </textarea>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <mat-form-field class="input-width">
+      <mat-form-field class="input-width">
         <input matInput placeholder="Entrez votre email" formControlName="email" required>
-    </mat-form-field>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-  <div class="boutonsForms">
+      <div class="boutonsForms">
         <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Valider</button>
         <button mat-raised-button type="reset" (click)="onReset()">Initialiser</button>
 
-    </div>
+      </div>
 
-    <br>
+      <br>
 
-</form>
+    </form>
+  </mat-card>
+</div>
 
 <table #myTable mat-table [dataSource]="liste" class="mat-elevation-z8">
 

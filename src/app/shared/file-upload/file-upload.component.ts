@@ -26,10 +26,8 @@ export class FileUploadComponent implements OnInit {
       };
     } catch (error) {
       this.filename = null;
-      this.base64File = null;
-      console.log('no file was selected...');
+      console.log('Pas de fichier choisi...');
     }
-
     this.file = fileChangeEvent.target.files[0];
   }
 
