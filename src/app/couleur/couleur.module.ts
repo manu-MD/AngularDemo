@@ -5,6 +5,7 @@ import {CouleurHomePageComponent} from './couleur-home-page/couleur-home-page.co
 import {SharedModule} from '../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from "@angular/material/card";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 const routes: Routes = [
   {
@@ -17,14 +18,15 @@ const routes: Routes = [
   declarations: [
     CouleurHomePageComponent,
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        RouterModule.forChild(routes),
-        ReactiveFormsModule,
-        SharedModule,
-        MatCardModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    SharedModule,
+    MatCardModule,
+    MatTooltipModule
+  ],
   exports: [
     RouterModule
   ]

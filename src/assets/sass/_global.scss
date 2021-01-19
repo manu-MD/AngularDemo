@@ -1,0 +1,52 @@
+@import 'theme';
+
+html, body { height: 100%; }
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(151,170,193);
+  background: radial-gradient(circle, rgba(151,170,193,0.8715861344537815) 53%, rgba(235,245,247,0.8155637254901961) 100%);
+}
+
+h1{
+  text-align: center;
+  color: #2c557a;
+  padding-top: 100px;
+}
+
+.input-width {
+  .mat-form-field-infix, .mat-form-field-flex {
+    width: 280px !important;
+  }
+}
+
+.boutonsForms button,
+.boutonsForms a {
+  margin-right: 8px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+
+.login-card {
+  max-width: 400px;
+  margin: auto;
+  .mat-card {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}
+
+.card {
+  max-width: 400px;
+  margin: auto;
+  .mat-card {
+    margin: 40px 0 40px 0;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}

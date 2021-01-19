@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from "@angular/material/card";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 const routes: Routes = [
   {
@@ -17,14 +18,15 @@ const routes: Routes = [
   declarations: [
     CamionComponent
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        RouterModule.forChild(routes),
-        FormsModule,
-        ReactiveFormsModule,
-        MatCardModule
-    ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatTooltipModule
+  ],
   exports: [
 RouterModule
   ]

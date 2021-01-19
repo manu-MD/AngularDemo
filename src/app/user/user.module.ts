@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { UserPageLoginComponent } from './user-page-login/user-page-login.component';
 import { UserPageInscriptionComponent } from './user-page-inscription/user-page-inscription.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -17,11 +18,12 @@ import {MatCardModule} from '@angular/material/card';
     UserPageLoginComponent,
     UserPageInscriptionComponent
   ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    SharedModule,
-    MatCardModule
-  ],
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        SharedModule,
+        MatCardModule,
+        MatTooltipModule
+    ],
 })
 export class UserModule { }

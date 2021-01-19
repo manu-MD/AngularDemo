@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MotoFormComponent } from './components/moto-form/moto-form.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 const routes: Routes = [
   {
@@ -17,14 +18,15 @@ const routes: Routes = [
   declarations: [
     MotoFormComponent
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterModule.forChild(routes),
-        SharedModule,
-        MatCardModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes),
+    SharedModule,
+    MatCardModule,
+    MatTooltipModule
+  ],
   exports: [
     RouterModule
   ]
