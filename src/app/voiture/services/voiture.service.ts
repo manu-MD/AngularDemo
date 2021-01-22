@@ -22,6 +22,6 @@ export class VoitureService extends BaseService {
 
   getPhoto(id: string) {
     console.log(`${ this.url }/photo/${ id }`);
-    return this.http.get(`${ this.url }/photo/${ id }`);
+    return `${ this.url }/photo/${ id }`;
   }
 }

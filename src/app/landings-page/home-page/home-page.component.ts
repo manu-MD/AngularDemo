@@ -47,12 +47,17 @@ export class HomePageComponent implements OnInit {
     this.vs.find().subscribe(
       (voitures: Voiture[]) => {
         this.voitures = voitures;
-        this.voitures.forEach(voiture => {
-          this.vs.getPhoto(voiture.id).subscribe(photo => voiture.photo = photo);
-        });
+        //this.voitures.forEach(voiture => {
+        //  this.vs.getPhoto(voiture.id).subscribe(photo => voiture.photo = photo);
+        //});
       }
     );
   }
+
+  getVoiturePhoto(voiture) {
+    return this.vs.getPhoto(voiture.id);
+  }
+
   findMotos() {
     this.ms.find().subscribe(
       (motos: Moto[]) => this.motos = motos
