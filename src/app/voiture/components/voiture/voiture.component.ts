@@ -95,7 +95,6 @@ export class VoitureComponent implements OnInit, OnDestroy {
     this.vs.findById(id).subscribe(
       (voiture: Voiture) => {
         this.voiture = voiture;
-
         this.form.patchValue({
           marqueId: this.voiture.marque.id,
           typeId: this.voiture.type.id,
@@ -127,9 +126,7 @@ export class VoitureComponent implements OnInit, OnDestroy {
 
   uploadFile(event) {
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({
-      photo: file
-    });
+    this.form.patchValue({photo: file});
     this.form.get('photo').updateValueAndValidity();
   }
 }
