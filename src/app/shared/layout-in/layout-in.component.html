@@ -1,6 +1,7 @@
-<h1>ADMIN SITE D'ANNONCES DE VEHICULES</h1>
+<div class="background">
+  <h1>ADMIN SITE D'ANNONCES DE VEHICULES</h1>
 
-<div id="boutons" class="boutonsForms">
+  <div id="boutons" class="boutonsForms">
     <a mat-raised-button routerLink="/admin">Voiture</a>
     <a mat-raised-button routerLink="/admin/moto">Moto</a>
     <a mat-raised-button routerLink="/admin/bateau">Bateau</a>
@@ -9,6 +10,7 @@
     <a mat-raised-button routerLink="/admin/couleur">Couleurs</a>
     <a mat-raised-button routerLink="/admin/user">Utilisateurs</a>
     <a mat-raised-button color="warn" routerLink="/logout">Deconnexion</a>
+  </div>
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
 

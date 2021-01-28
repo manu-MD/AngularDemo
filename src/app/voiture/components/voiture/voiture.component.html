@@ -66,7 +66,9 @@
   </mat-card>
 </div>
 
-<table #myTable mat-table [dataSource]="liste" class="mat-elevation-z8">
+<br>
+
+<table #myTable mat-table [dataSource]="liste" class="mat-elevation-z8" *ngIf="isAdmin">
 
   <ng-container matColumnDef="marque">
     <th mat-header-cell *matHeaderCellDef> Marque </th>

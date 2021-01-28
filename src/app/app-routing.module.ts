@@ -34,22 +34,18 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./voiture/voiture.module').then(m => m.VoitureModule),
       },
-
       {
         path: 'moto',
         loadChildren: () => import('./moto/moto.module').then(m => m.MotoModule),
       },
-
       {
         path: 'bateau',
         loadChildren: () => import('./bateau/bateau.module').then(m => m.BateauModule),
       },
-
       {
         path: 'camion',
         loadChildren: () => import('./camion/camion.module').then(m => m.CamionModule),
       },
-
       {
         path: 'marque',
         loadChildren: () => import('./marque/marque.module').then(m => m.MarqueModule),
@@ -74,6 +70,10 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('./landings-page/landings-page.module').then(m => m.LandingsPageModule)
+      },
+      {
+        path: 'voiture',
+        loadChildren: () => import('./voiture/voiture.module').then(m => m.VoitureModule),
       },
     ]
   },

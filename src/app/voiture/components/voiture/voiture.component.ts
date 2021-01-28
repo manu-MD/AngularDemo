@@ -7,6 +7,8 @@ import { VoitureService } from '../../services/voiture.service';
 import {FileUploadComponent} from '../../../shared/file-upload/file-upload.component';
 import {MatDialog} from '@angular/material/dialog';
 import {HttpClient} from '@angular/common/http';
+import {AuthService} from '../../../user/services/auth.service';
+import {Role} from '../../../user/interfaces/user.interface';
 
 @Component({
   selector: 'app-voiture',
@@ -30,6 +32,7 @@ export class VoitureComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private vs: VoitureService,
     public dialog: MatDialog,
+    public as: AuthService,
     private http: HttpClient
   ) {
     this.initForm();
@@ -128,5 +131,9 @@ export class VoitureComponent implements OnInit, OnDestroy {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({photo: file});
     this.form.get('photo').updateValueAndValidity();
+  }
+
+  get isAdmin() {
+    return this.as && this.as.role === Role.Admin;
   }
 }
